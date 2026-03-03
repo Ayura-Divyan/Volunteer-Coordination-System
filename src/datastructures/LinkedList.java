@@ -4,6 +4,7 @@ public class LinkedList<T> {
     Node<T> head;
 
     //The single loop results in O(n)
+    //Method to add data to linked list
     public void add(T data) {
         Node<T> newNode = new Node<T>(data);
 
