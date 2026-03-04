@@ -24,4 +24,10 @@ public class Volunteer {
     public String getName() {return name;}
     public  String getTaskAssigned() {return taskAssigned;}
     public String getPriorityLevel() {return priorityLevel;}
+
+    //Setters
+    public void setVolunteerId(String volunteerId) {this.volunteerId = volunteerId;}
+    public void setName(String name) {this.name = name;}
+    public void setTaskAssigned(String taskAssigned) {this.taskAssigned = taskAssigned;}
+    public  void setPriorityLevel(String priorityLevel) {this.priorityLevel = priorityLevel;}
 }
