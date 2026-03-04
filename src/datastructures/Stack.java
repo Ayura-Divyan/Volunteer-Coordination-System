@@ -6,8 +6,8 @@ public class Stack<T> {
 
     public void push(T item) {
         Node<T> stackNode = new Node<>(item); //The use of a node results in O(1)
-        top = top.next;
-        top.next = stackNode;
+        stackNode.next = top;
+        top = stackNode;
     }
 
     public T pop() {
