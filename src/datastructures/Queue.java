@@ -19,7 +19,24 @@ public class Queue<T> {
     }
 
     //Method to dequeue an item at the front
-    public void dequeue() {
+    public T dequeue() {
+        if (isEmpty()) {
+            System.out.println("The queue is empty");
+            return null;
+        }
 
+        T data = front.data;
+        front = front.next;
+
+        //This will make sure that if the queue is null it will reset the rear as well
+        if (front == null) {
+            rear = null;
+        }
+    }
+
+    //Method to check if the queue is empty
+
+    public Boolean isEmpty() {
+        return front == null;
     }
 }
