@@ -32,6 +32,7 @@ public class Queue<T> {
         if (front == null) {
             rear = null;
         }
+        return data;
     }
 
     //Method to check if the queue is empty
