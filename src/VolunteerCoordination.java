@@ -13,4 +13,22 @@ public class VolunteerCoordination {
         this.mediumPriorityQueue = new Queue<>();
         this.lowPriorityQueue = new Queue<>();
     }
+
+    //Adding volunteers
+    public void registerVolunteer(String volunteer, String name, String priority) {
+        Volunteer newVolunteer = new Volunteer(volunteer, name, priority);
+
+        allVolunteers.add(newVolunteer);
+
+        switch(priority.toLowerCase()) {
+            case "high":
+                highPriorityQueue.enqueue(newVolunteer);
+                break;
+            case "medium":
+                mediumPriorityQueue.enqueue(newVolunteer);
+                break;
+            case "low":
+                lowPriorityQueue.enqueue(newVolunteer);
+        }
+    }
 }
