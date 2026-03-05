@@ -47,5 +47,15 @@ public class VolunteerCoordination {
     }
 
     //Removing volunteers
+    public boolean removeVolunteer(String id) {
+        Volunteer volunteer = getVolunteer(id);
 
+        if (volunteer == null) {
+            System.out.println("Error: Volunteer with ID" + id + " not found");
+            return false;
+        }
+
+        allVolunteers.remove(volunteer);
+        return true;
+    }
 }
