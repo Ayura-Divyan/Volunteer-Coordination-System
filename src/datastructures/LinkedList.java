@@ -24,4 +24,27 @@ public class LinkedList<T> {
     public Node<T> getHead() {
         return head;
     }
+
+    //Remove method
+    public void remove(T data) {
+        if (head == null) {
+            return;
+        }
+
+            if (head.data.equals(data)) {
+                head = head.next;
+            } else {
+                Node<T> current = head;
+                Node<T> previous = null;
+                while (current != null && !current.data.equals(data)) {
+                    previous = current;
+                    current = current.next;
+                }
+
+                if (current != null) {
+                    previous.next = current.next;
+                }
+            }
+    }
+
 }

@@ -45,4 +45,7 @@ public class VolunteerCoordination {
         }
         return null;
     }
+
+    //Removing volunteers
+
 }
