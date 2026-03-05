@@ -31,4 +31,6 @@ public class VolunteerCoordination {
                 lowPriorityQueue.enqueue(newVolunteer);
         }
     }
+
+    //
 }

@@ -19,4 +19,10 @@ public class LinkedList<T> {
             current.next = linkedListNode;
         }
     }
+
+    //Getter for head
+
+    public Node<T> getHead() {
+        return head;
+    }
 }
