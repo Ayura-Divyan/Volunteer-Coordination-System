@@ -55,6 +55,8 @@ public class VolunteerCoordination {
             return false;
         }
 
+        volunteer.setAssigned(true);
+
         allVolunteers.remove(volunteer);
         return true;
     }
