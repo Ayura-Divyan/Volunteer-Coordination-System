@@ -15,8 +15,8 @@ public class VolunteerCoordination {
     }
 
     //Adding volunteers
-    public void registerVolunteer(String volunteer, String name, String priority) {
-        Volunteer newVolunteer = new Volunteer(volunteer, name, priority);
+    public void registerVolunteer(String id, String name, String priority) {
+        Volunteer newVolunteer = new Volunteer(id, name, priority);
 
         allVolunteers.add(newVolunteer);
 
@@ -32,5 +32,17 @@ public class VolunteerCoordination {
         }
     }
 
-    //
+    //Searching volunteers
+    public Volunteer getVolunteer(String id) {
+        Node<Volunteer> current =  allVolunteers.getHead();
+
+        //Linear search is used resulting in O(n)
+        while (current != null) {
+            if (current.getData().getVolunteerId().equals(id)) {
+                return current.getData();
+            }
+            current = current.getNext();
+        }
+        return null;
+    }
 }
