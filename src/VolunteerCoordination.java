@@ -60,4 +60,23 @@ public class VolunteerCoordination {
         allVolunteers.remove(volunteer);
         return true;
     }
+
+    //Assigning tasks
+    public void assignTask (String task) {
+        if (!highPriorityQueue.isEmpty()) {
+            highPriorityQueue.dequeue();
+
+            return;
+        }
+
+        if (!mediumPriorityQueue.isEmpty()) {
+            mediumPriorityQueue.dequeue();
+            return;
+        }
+
+        if (!lowPriorityQueue.isEmpty()) {
+            lowPriorityQueue.dequeue();
+        }
+
+    }
 }
