@@ -1,6 +1,6 @@
 package datastructures;
 
-//Node for the linked list
+//Node for the custom data structures
 //T is called a generic since the linked list takes multiple data types
 public class Node<T> {
     T data;
@@ -11,4 +11,9 @@ public class Node<T> {
         this.data = newData;
         this.next = null;
     }
+
+    //Getters
+    public T getData() {return data;}
+
+    public Node<T> getNext() {return next;}
 }

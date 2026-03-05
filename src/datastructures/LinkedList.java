@@ -21,7 +21,6 @@ public class LinkedList<T> {
     }
 
     //Getter for head
-
     public Node<T> getHead() {
         return head;
     }
