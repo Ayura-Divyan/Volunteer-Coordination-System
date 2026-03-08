@@ -34,6 +34,17 @@ public class Main {
 
                     system.registerVolunteer(id, name, priority);
                     System.out.println("Volunteer was successfully registered ");
+                    break;
+                case 2:
+                    System.out.println("Enter volunteer ID to be removed: ");
+                    String removeId = input.nextLine();
+                    if (system.removeVolunteer(removeId)) {
+                        System.out.println("Volunteer removed");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Enter the name or ID of volunteer");
+
             }
         }
     }
