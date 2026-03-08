@@ -56,7 +56,16 @@ public class Main {
                 case "3":
                     System.out.println("Enter the name or ID of volunteer: ");
                     String searchTerm = input.nextLine();
-                    system.getVolunteer(searchTerm);
+                    Volunteer foundVolunteer = system.getVolunteer(searchTerm);
+                    if (foundVolunteer != null) {
+                        System.out.println("ID: " + foundVolunteer.getVolunteerId());
+                        System.out.println("Name: " + foundVolunteer.getName());
+                        System.out.println("Task Assigned: " + foundVolunteer.getTaskAssigned());
+                        System.out.println("Priority: " + foundVolunteer.getPriorityLevel());
+                        System.out.println("Status: " + (foundVolunteer.isAssigned() ? "Yes" : "No"));
+                    } else {
+                        System.out.println("Error: No volunteer found with ID '" + searchTerm + "'.");
+                    }
                     break;
                 case "4":
                     System.out.println("Enter the task to assign: ");
@@ -73,6 +82,10 @@ public class Main {
                 default:
                     System.out.println("Invalid input. Please try again");
 
+            }
+            if (running) {
+                System.out.println("\nPress enter to return to main menu...");
+                input.nextLine();
             }
         }
         input.close();
