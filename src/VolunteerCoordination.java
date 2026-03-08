@@ -5,7 +5,7 @@ public class VolunteerCoordination {
     private Queue<Volunteer> highPriorityQueue;
     private Queue<Volunteer> mediumPriorityQueue;
     private Queue<Volunteer> lowPriorityQueue;
-    private Stack<Volunteer> volunteerHistory;
+    private Stack<ActionRecord> volunteerHistory;
 
     //Constructor
     public VolunteerCoordination() {
@@ -60,7 +60,7 @@ public class VolunteerCoordination {
         volunteer.setAssigned(true);
 
         allVolunteers.remove(volunteer);
-        volunteerHistory.push(volunteer);
+        volunteerHistory.push(new ActionRecord("REMOVE", volunteer));
         return true;
     }
 
@@ -82,7 +82,7 @@ public class VolunteerCoordination {
             } else {
                 frontPerson.setAssigned(true);
                 frontPerson.setTaskAssigned(task);
-                volunteerHistory.push(frontPerson);
+                volunteerHistory.push(new ActionRecord("ASSIGN", frontPerson));
                targetQueue.dequeue();
                 return true;
             }
@@ -98,20 +98,42 @@ public class VolunteerCoordination {
             return;
         }
 
-        Volunteer lastAssigned = volunteerHistory.pop();
-        lastAssigned.setAssigned(false);
-        lastAssigned.setTaskAssigned("Unassigned");
+        ActionRecord lastAction = volunteerHistory.pop();
+        Volunteer targetVolunteer = lastAction.getVolunteer();
+        String type = lastAction.getActionType();
 
-        String priority = lastAssigned.getPriorityLevel();
-        switch(priority.toLowerCase()) {
-            case "high":
-                highPriorityQueue.enqueue(lastAssigned);
-                break;
-            case "medium":
-                mediumPriorityQueue.enqueue(lastAssigned);
-                break;
-            case "low":
-                lowPriorityQueue.enqueue(lastAssigned);
+        if (type.equals("ASSIGN")) {
+            targetVolunteer.setAssigned(false);
+            targetVolunteer.setTaskAssigned("Unassigned");
+
+            switch(targetVolunteer.getPriorityLevel().toLowerCase()) {
+                case "high":
+                    highPriorityQueue.enqueue(targetVolunteer);
+                    break;
+                case "medium":
+                    mediumPriorityQueue.enqueue(targetVolunteer);
+                    break;
+                case "low":
+                    lowPriorityQueue.enqueue(targetVolunteer);
+                    break;
+            }
+            System.out.println("Undid assignment for: " + targetVolunteer.getName());
+        } else if (type.equals("REMOVE")) {
+            targetVolunteer.setAssigned(false);
+            allVolunteers.add(targetVolunteer);
+
+            switch(targetVolunteer.getPriorityLevel().toLowerCase()) {
+                case "high":
+                    highPriorityQueue.enqueue(targetVolunteer);
+                    break;
+                case "medium":
+                    mediumPriorityQueue.enqueue(targetVolunteer);
+                    break;
+                case "low":
+                    lowPriorityQueue.enqueue(targetVolunteer);
+                    break;
+            }
+            System.out.println("Undid removal for: " + targetVolunteer.getName());
         }
     }
 }
