@@ -43,7 +43,9 @@ public class Main {
                     }
                     break;
                 case "3":
-                    System.out.println("Enter the name or ID of volunteer");
+                    System.out.println("Enter the name or ID of volunteer: ");
+                    String searchTerm = input.nextLine();
+                    system.getVolunteer(searchTerm);
                     break;
                 case "4":
                     System.out.println("Enter the task to assign: ");
