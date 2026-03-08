@@ -32,7 +32,7 @@ public class Main {
                     String priority = "";
                     while (true) {
                         System.out.println("Enter the volunteer priority (HIGH/MEDIUM/LOW): ");
-                        priority = input.nextLine().trim();
+                        priority = input.nextLine();
 
                         if (priority.equalsIgnoreCase("HIGH") ||
                                 priority.equalsIgnoreCase("MEDIUM") ||
