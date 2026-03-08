@@ -90,8 +90,7 @@ public class VolunteerCoordination {
         return false;
     }
 
-
-
+    //Undo Method
     public void undoLastAction() {
         if (volunteerHistory.isEmpty()) {
             System.out.println("Error: No more volunteers to undo");
