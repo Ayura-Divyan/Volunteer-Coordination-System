@@ -5,7 +5,7 @@ public class VolunteerCoordination {
     private Queue<Volunteer> highPriorityQueue;
     private Queue<Volunteer> mediumPriorityQueue;
     private Queue<Volunteer> lowPriorityQueue;
-    private Stack<Volunteer> assignmentHistory;
+    private Stack<Volunteer> volunteerHistory;
 
     //Constructor
     public VolunteerCoordination() {
@@ -13,7 +13,7 @@ public class VolunteerCoordination {
         this.highPriorityQueue = new Queue<>();
         this.mediumPriorityQueue = new Queue<>();
         this.lowPriorityQueue = new Queue<>();
-        this.assignmentHistory = new Stack<>();
+        this.volunteerHistory = new Stack<>();
     }
 
     //Adding volunteers
@@ -60,6 +60,7 @@ public class VolunteerCoordination {
         volunteer.setAssigned(true);
 
         allVolunteers.remove(volunteer);
+        volunteerHistory.push(volunteer);
         return true;
     }
 
@@ -81,7 +82,7 @@ public class VolunteerCoordination {
             } else {
                 frontPerson.setAssigned(true);
                 frontPerson.setTaskAssigned(task);
-                assignmentHistory.push(frontPerson);
+                volunteerHistory.push(frontPerson);
                targetQueue.dequeue();
                 return true;
             }
@@ -92,12 +93,12 @@ public class VolunteerCoordination {
 
 
     public void undoLastAction() {
-        if (assignmentHistory.isEmpty()) {
+        if (volunteerHistory.isEmpty()) {
             System.out.println("Error: No more volunteers to undo");
             return;
         }
 
-        Volunteer lastAssigned = assignmentHistory.pop();
+        Volunteer lastAssigned = volunteerHistory.pop();
         lastAssigned.setAssigned(false);
         lastAssigned.setTaskAssigned("Unassigned");
 
