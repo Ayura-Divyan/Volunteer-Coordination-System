@@ -29,9 +29,19 @@ public class Main {
                     String id = input.nextLine();
                     System.out.println("Enter the volunteer name: ");
                     String name = input.nextLine();
-                    System.out.println("Enter the volunteer priority (HIGH/MEDIUM/LOW): ");
-                    String priority = input.nextLine();
+                    String priority = "";
+                    while (true) {
+                        System.out.println("Enter the volunteer priority (HIGH/MEDIUM/LOW): ");
+                        priority = input.nextLine();
 
+                        if (priority.equalsIgnoreCase("HIGH") ||
+                                priority.equalsIgnoreCase("MEDIUM") ||
+                                priority.equalsIgnoreCase("LOW")) {
+                            break;
+                        } else {
+                            System.out.println("Invalid input. Please type exactly High, Medium, or Low.");
+                        }
+                    }
                     system.registerVolunteer(id, name, priority);
                     System.out.println("Volunteer was successfully registered ");
                     break;
@@ -43,7 +53,9 @@ public class Main {
                     }
                     break;
                 case "3":
-                    System.out.println("Enter the name or ID of volunteer");
+                    System.out.println("Enter the name or ID of volunteer: ");
+                    String searchTerm = input.nextLine();
+                    system.getVolunteer(searchTerm);
                     break;
                 case "4":
                     System.out.println("Enter the task to assign: ");
