@@ -20,11 +20,11 @@ public class Main {
             System.out.println("6. Exit program");
             System.out.println("----------------------------------------");
             System.out.println("Enter your choice (1-6): ");
-            int choice = input.nextInt();
+            String choice = input.nextLine();
 
             //Process the user choice
             switch (choice) {
-                case 1:
+                case "1":
                     System.out.println("Enter the volunteer ID: ");
                     String id = input.nextLine();
                     System.out.println("Enter the volunteer name: ");
@@ -35,17 +35,33 @@ public class Main {
                     system.registerVolunteer(id, name, priority);
                     System.out.println("Volunteer was successfully registered ");
                     break;
-                case 2:
+                case "2":
                     System.out.println("Enter volunteer ID to be removed: ");
                     String removeId = input.nextLine();
                     if (system.removeVolunteer(removeId)) {
                         System.out.println("Volunteer removed");
                     }
                     break;
-                case 3:
+                case "3":
                     System.out.println("Enter the name or ID of volunteer");
+                    break;
+                case "4":
+                    System.out.println("Enter the task to assign: ");
+                    String task = input.nextLine();
+                    system.assignTask(task);
+                    break;
+                case "5":
+                    system.undoLastAction();
+                    break;
+                case "6":
+                    System.out.println("Exiting the program...");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid input. Please try again");
 
             }
         }
+        input.close();
     }
 }
