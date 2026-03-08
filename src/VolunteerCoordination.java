@@ -88,4 +88,29 @@ public class VolunteerCoordination {
         }
         return false;
     }
+
+
+
+    public void undoLastAction() {
+        if (assignmentHistory.isEmpty()) {
+            System.out.println("Error: No more volunteers to undo");
+            return;
+        }
+
+        Volunteer lastAssigned = assignmentHistory.pop();
+        lastAssigned.setAssigned(false);
+        lastAssigned.setTaskAssigned("Unassigned");
+
+        String priority = lastAssigned.getPriorityLevel();
+        switch(priority.toLowerCase()) {
+            case "high":
+                highPriorityQueue.enqueue(lastAssigned);
+                break;
+            case "medium":
+                mediumPriorityQueue.enqueue(lastAssigned);
+                break;
+            case "low":
+                lowPriorityQueue.enqueue(lastAssigned);
+        }
+    }
 }
