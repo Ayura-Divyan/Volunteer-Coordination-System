@@ -21,6 +21,7 @@ public class Main {
             System.out.println("----------------------------------------");
             System.out.println("Enter your choice (1-6): ");
             String choice = input.nextLine();
+            System.out.println();
 
             //Process the user choice
             switch (choice) {
