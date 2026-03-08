@@ -19,10 +19,10 @@ public class Queue<T> {
     }
 
     //Method to dequeue an item at the front
-    public T dequeue() {
+    public void dequeue() {
         if (isEmpty()) {
             System.out.println("The queue is empty");
-            return null;
+            return;
         }
 
         T data = front.data;
@@ -32,12 +32,18 @@ public class Queue<T> {
         if (front == null) {
             rear = null;
         }
-        return data;
     }
 
     //Method to check if the queue is empty
-
     public Boolean isEmpty() {
         return front == null;
+    }
+
+    //Peek method
+    public T peek() {
+        if (isEmpty()) {
+            return null;
+        }
+        return front.getData();
     }
 }

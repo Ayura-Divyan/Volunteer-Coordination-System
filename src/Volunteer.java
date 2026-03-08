@@ -12,10 +12,10 @@ public class Volunteer {
     private boolean assigned;
 
     //Overloaded constructor - used to take user inputs and assign them to the attributes
-    public Volunteer(String volunteerId, String name, String taskAssigned, String priorityLevel) {
+    public Volunteer(String volunteerId, String name, String priorityLevel) {
         this.volunteerId = volunteerId;
         this.name = name;
-        this.taskAssigned = taskAssigned;
+        this.taskAssigned = "Unassigned";
         this.priorityLevel = priorityLevel;
         this.assigned = false;
     }
