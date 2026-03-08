@@ -34,13 +34,16 @@ public class Queue<T> {
         }
     }
 
-    public void peek() {
-
-    }
-
     //Method to check if the queue is empty
-
     public Boolean isEmpty() {
         return front == null;
+    }
+
+    //Peek method
+    public T peek() {
+        if (isEmpty()) {
+            return null;
+        }
+        return front.getData();
     }
 }

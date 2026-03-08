@@ -5,6 +5,7 @@ public class VolunteerCoordination {
     private Queue<Volunteer> highPriorityQueue;
     private Queue<Volunteer> mediumPriorityQueue;
     private Queue<Volunteer> lowPriorityQueue;
+    private Stack<Volunteer> assignmentHistory;
 
     //Constructor
     public VolunteerCoordination() {
@@ -12,6 +13,7 @@ public class VolunteerCoordination {
         this.highPriorityQueue = new Queue<>();
         this.mediumPriorityQueue = new Queue<>();
         this.lowPriorityQueue = new Queue<>();
+        this.assignmentHistory = new Stack<>();
     }
 
     //Adding volunteers
@@ -63,20 +65,27 @@ public class VolunteerCoordination {
 
     //Assigning tasks
     public void assignTask (String task) {
-        if (!highPriorityQueue.isEmpty()) {
-            highPriorityQueue.dequeue();
+        if (processQueue(task, highPriorityQueue)) return;
 
-            return;
+        if (processQueue(task, mediumPriorityQueue)) return;
+
+        if (processQueue(task, lowPriorityQueue)) return;
+    }
+
+    private boolean processQueue(String task, Queue<Volunteer> targetQueue) {
+        while (!targetQueue.isEmpty()) {
+            Volunteer frontPerson = targetQueue.peek();
+
+            if (frontPerson.isAssigned()){
+                targetQueue.dequeue();
+            } else {
+                frontPerson.setAssigned(true);
+                frontPerson.setTaskAssigned(task);
+                assignmentHistory.push(frontPerson);
+               targetQueue.dequeue();
+                return true;
+            }
         }
-
-        if (!mediumPriorityQueue.isEmpty()) {
-            mediumPriorityQueue.dequeue();
-            return;
-        }
-
-        if (!lowPriorityQueue.isEmpty()) {
-            lowPriorityQueue.dequeue();
-        }
-
+        return false;
     }
 }
