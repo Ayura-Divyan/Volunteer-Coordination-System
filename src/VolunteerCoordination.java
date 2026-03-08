@@ -35,12 +35,14 @@ public class VolunteerCoordination {
     }
 
     //Searching volunteers
-    public Volunteer getVolunteer(String id) {
+    public Volunteer getVolunteer(String searchTerm) {
         Node<Volunteer> current =  allVolunteers.getHead();
 
         //Linear search is used resulting in O(n)
         while (current != null) {
-            if (current.getData().getVolunteerId().equals(id)) {
+            Volunteer v = current.getData();
+
+            if (v.getVolunteerId().equalsIgnoreCase(searchTerm) || v.getName().equalsIgnoreCase(searchTerm)) {
                 return current.getData();
             }
             current = current.getNext();
