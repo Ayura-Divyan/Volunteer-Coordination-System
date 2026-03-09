@@ -137,4 +137,13 @@ public class VolunteerCoordination {
             System.out.println("Undid removal for: " + targetVolunteer.getName());
         }
     }
+
+    //Print all volunteers method
+    public void getAllVolunteers(String id) {
+        Node<Volunteer> current = allVolunteers.getHead();
+
+        if (current == null) {
+            System.out.println("No volunteers currently registered in the system");
+        }
+    }
 }
