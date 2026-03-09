@@ -149,7 +149,7 @@ public class VolunteerCoordination {
 
         System.out.println("\n-----Master Volunteer List-----\n");
         System.out.printf("%-5s | %-15s | %-8s | %-15s | %-10s%n", "ID", "Name", "Priority", "Task", "Status");
-        System.out.println("-------------------------------------------");
+        System.out.println("-------------------------------------------------------------------");
 
         while (current != null) {
             Volunteer v = current.getData();
@@ -161,6 +161,6 @@ public class VolunteerCoordination {
 
             current = current.getNext();
         }
-        System.out.println("-------------------------------------------");
+        System.out.println("-------------------------------------------------------------------");
     }
 }
