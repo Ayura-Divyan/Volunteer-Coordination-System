@@ -1,5 +1,5 @@
 public class ActionRecord {
-    //Fields
+    //Fields - Attributes
     private String actionType;
     private Volunteer volunteer;
 

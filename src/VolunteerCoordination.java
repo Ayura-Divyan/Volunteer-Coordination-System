@@ -139,11 +139,27 @@ public class VolunteerCoordination {
     }
 
     //Print all volunteers method
-    public void getAllVolunteers(String id) {
+    public void getAllVolunteers() {
         Node<Volunteer> current = allVolunteers.getHead();
 
         if (current == null) {
             System.out.println("No volunteers currently registered in the system");
+            return;
         }
+
+        System.out.println("\n-----Master Volunteer List-----\n");
+        System.out.println("ID | Name | Priority | Task | Status");
+        System.out.println("-------------------------------------------");
+
+        while (current != null) {
+            Volunteer v = current.getData();
+
+            String status = v.isAssigned() ? "Assigned" : "Available";
+
+            System.out.printf(v.getVolunteerId(), v.getName(), v.getPriorityLevel(), v.getTaskAssigned(), status);
+
+            current = current.getNext();
+        }
+        System.out.println("-------------------------------------------");
     }
 }
