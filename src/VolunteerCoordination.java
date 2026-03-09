@@ -137,4 +137,30 @@ public class VolunteerCoordination {
             System.out.println("Undid removal for: " + targetVolunteer.getName());
         }
     }
+
+    //Print all volunteers method
+    public void getAllVolunteers() {
+        Node<Volunteer> current = allVolunteers.getHead();
+
+        if (current == null) {
+            System.out.println("No volunteers currently registered in the system");
+            return;
+        }
+
+        System.out.println("\n-----Master Volunteer List-----\n");
+        System.out.printf("%-5s | %-15s | %-8s | %-15s | %-10s%n", "ID", "Name", "Priority", "Task", "Status");
+        System.out.println("-------------------------------------------------------------------");
+
+        while (current != null) {
+            Volunteer v = current.getData();
+
+            String status = v.isAssigned() ? "Assigned" : "Available";
+
+            System.out.printf("%-5s | %-15s | %-8s | %-15s | %-10s%n",
+                    v.getVolunteerId(), v.getName(), v.getPriorityLevel(), v.getTaskAssigned(), status);
+
+            current = current.getNext();
+        }
+        System.out.println("-------------------------------------------------------------------");
+    }
 }

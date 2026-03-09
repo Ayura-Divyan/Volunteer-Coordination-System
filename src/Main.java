@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //Initialise the input scanner and the system
+        //Initialise the input scanner and the coordinationSystem
         Scanner input = new Scanner(System.in);
-        VolunteerCoordination system = new VolunteerCoordination();
+        VolunteerCoordination coordinationSystem = new VolunteerCoordination();
         boolean running = true;
 
         while (running) {
@@ -17,9 +17,10 @@ public class Main {
             System.out.println("3. Search for a volunteer");
             System.out.println("4. Assign task to a volunteer");
             System.out.println("5. Undo last action");
-            System.out.println("6. Exit program");
+            System.out.println("6. Display all volunteers");
+            System.out.println("7. Exit program");
             System.out.println("----------------------------------------");
-            System.out.println("Enter your choice (1-6): ");
+            System.out.println("Enter your choice (1-7): ");
             String choice = input.nextLine();
             System.out.println();
 
@@ -31,7 +32,7 @@ public class Main {
                         System.out.println("Enter the volunteer ID: ");
                         id = input.nextLine();
 
-                        if (system.getVolunteer(id) == null) {
+                        if (coordinationSystem.getVolunteer(id) == null) {
                             break;
                         } else {
                             System.out.println("Error: This ID already exists in the database");
@@ -52,20 +53,20 @@ public class Main {
                             System.out.println("Invalid input. Please type exactly High, Medium, or Low.");
                         }
                     }
-                    system.registerVolunteer(id, name, priority);
+                    coordinationSystem.registerVolunteer(id, name, priority);
                     System.out.println("Volunteer was successfully registered ");
                     break;
                 case "2": //Volunteer removal
                     System.out.println("Enter volunteer ID to be removed: ");
                     String removeId = input.nextLine();
-                    if (system.removeVolunteer(removeId)) {
+                    if (coordinationSystem.removeVolunteer(removeId)) {
                         System.out.println("Volunteer removed");
                     }
                     break;
                 case "3": //Searching for volunteers
                     System.out.println("Enter the name or ID of volunteer: ");
                     String searchTerm = input.nextLine();
-                    Volunteer foundVolunteer = system.getVolunteer(searchTerm);
+                    Volunteer foundVolunteer = coordinationSystem.getVolunteer(searchTerm);
                     if (foundVolunteer != null) {
                         System.out.println("ID: " + foundVolunteer.getVolunteerId());
                         System.out.println("Name: " + foundVolunteer.getName());
@@ -79,12 +80,15 @@ public class Main {
                 case "4": //Task assignment
                     System.out.println("Enter the task to assign: ");
                     String task = input.nextLine();
-                    system.assignTask(task);
+                    coordinationSystem.assignTask(task);
                     break;
                 case "5": //Undo actions
-                    system.undoLastAction();
+                    coordinationSystem.undoLastAction();
                     break;
-                case "6": //Exit program
+                case "6": //Print all Volunteers
+                    coordinationSystem.getAllVolunteers();
+                    break;
+                case "7": //Exit program
                     System.out.println("Exiting the program...");
                     running = false;
                     break;
