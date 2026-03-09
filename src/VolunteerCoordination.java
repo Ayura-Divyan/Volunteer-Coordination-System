@@ -148,7 +148,7 @@ public class VolunteerCoordination {
         }
 
         System.out.println("\n-----Master Volunteer List-----\n");
-        System.out.println("ID | Name | Priority | Task | Status");
+        System.out.printf("%-5s | %-15s | %-8s | %-15s | %-10s%n", "ID", "Name", "Priority", "Task", "Status");
         System.out.println("-------------------------------------------");
 
         while (current != null) {
@@ -156,7 +156,8 @@ public class VolunteerCoordination {
 
             String status = v.isAssigned() ? "Assigned" : "Available";
 
-            System.out.printf(v.getVolunteerId(), v.getName(), v.getPriorityLevel(), v.getTaskAssigned(), status);
+            System.out.printf("%-5s | %-15s | %-8s | %-15s | %-10s%n0",
+                    v.getVolunteerId(), v.getName(), v.getPriorityLevel(), v.getTaskAssigned(), status);
 
             current = current.getNext();
         }
