@@ -25,9 +25,18 @@ public class Main {
 
             //Process the user choice
             switch (choice) {
-                case "1":
-                    System.out.println("Enter the volunteer ID: ");
-                    String id = input.nextLine();
+                case "1": //Volunteer registration
+                    String id;
+                    while (true) { //Checks if the id that was entered already exists in the list
+                        System.out.println("Enter the volunteer ID: ");
+                        id = input.nextLine();
+
+                        if (system.getVolunteer(id) == null) {
+                            break;
+                        } else {
+                            System.out.println("Error: This ID already exists in the database");
+                        }
+                    }
                     System.out.println("Enter the volunteer name: ");
                     String name = input.nextLine();
                     String priority = "";
@@ -46,14 +55,14 @@ public class Main {
                     system.registerVolunteer(id, name, priority);
                     System.out.println("Volunteer was successfully registered ");
                     break;
-                case "2":
+                case "2": //Volunteer removal
                     System.out.println("Enter volunteer ID to be removed: ");
                     String removeId = input.nextLine();
                     if (system.removeVolunteer(removeId)) {
                         System.out.println("Volunteer removed");
                     }
                     break;
-                case "3":
+                case "3": //Searching for volunteers
                     System.out.println("Enter the name or ID of volunteer: ");
                     String searchTerm = input.nextLine();
                     Volunteer foundVolunteer = system.getVolunteer(searchTerm);
@@ -67,23 +76,23 @@ public class Main {
                         System.out.println("Error: No volunteer found with ID '" + searchTerm + "'.");
                     }
                     break;
-                case "4":
+                case "4": //Task assignment
                     System.out.println("Enter the task to assign: ");
                     String task = input.nextLine();
                     system.assignTask(task);
                     break;
-                case "5":
+                case "5": //Undo actions
                     system.undoLastAction();
                     break;
-                case "6":
+                case "6": //Exit program
                     System.out.println("Exiting the program...");
                     running = false;
                     break;
-                default:
+                default: //Invalid input check
                     System.out.println("Invalid input. Please try again");
 
             }
-            if (running) {
+            if (running) { //Makes sure main menu doesn't load right after you're finished with a sub menu
                 System.out.println("\nPress enter to return to main menu...");
                 input.nextLine();
             }
