@@ -156,7 +156,7 @@ public class VolunteerCoordination {
 
             String status = v.isAssigned() ? "Assigned" : "Available";
 
-            System.out.printf("%-5s | %-15s | %-8s | %-15s | %-10s%n0",
+            System.out.printf("%-5s | %-15s | %-8s | %-15s | %-10s%n",
                     v.getVolunteerId(), v.getName(), v.getPriorityLevel(), v.getTaskAssigned(), status);
 
             current = current.getNext();
