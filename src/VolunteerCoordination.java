@@ -163,4 +163,15 @@ public class VolunteerCoordination {
         }
         System.out.println("-------------------------------------------------------------------");
     }
+
+    //View last action on stack
+    public void displayLastAction() {
+        if (volunteerHistory.isEmpty()) {
+            System.out.println("No actions have been performed yet");
+            return;
+        }
+        ActionRecord lastAction = volunteerHistory.peek();
+        System.out.println("Last Action Performed: [" + lastAction.getActionType() + "] on Volunteer ID: "
+                + lastAction.getVolunteer().getVolunteerId() + " (" + lastAction.getVolunteer().getName() + ")");
+    }
 }
