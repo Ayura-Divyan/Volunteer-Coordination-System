@@ -163,4 +163,59 @@ public class VolunteerCoordination {
         }
         System.out.println("-------------------------------------------------------------------");
     }
+
+    //Peek last action on stack
+    public void displayLastAction() {
+        if (volunteerHistory.isEmpty()) {
+            System.out.println("No actions have been performed yet");
+            return;
+        }
+        ActionRecord lastAction = volunteerHistory.peek();
+        System.out.println("Last Action Performed: [" + lastAction.getActionType() + "] on Volunteer ID: "
+                + lastAction.getVolunteer().getVolunteerId() + " (" + lastAction.getVolunteer().getName() + ")");
+    }
+
+    //Peek next person on queue
+    //Method to be called in the CLI
+    public void displayNextVolunteer() {
+        Volunteer nextVolunteer = getNextValidVolunteer();
+
+        if (nextVolunteer != null) {
+            System.out.println("Next person to be assigned: " + nextVolunteer.getName()
+                    + " | Priority: " + nextVolunteer.getPriorityLevel());
+        } else {
+            System.out.println("There are currently no available volunteers waiting for tasks.");
+        }
+    }
+
+    //Method to actually peek the queue
+    private Volunteer getNextValidVolunteer() {
+        while (!highPriorityQueue.isEmpty()) {
+            Volunteer volunteer = highPriorityQueue.peek();
+            if (volunteer.isAssigned()) { //lazy deletion
+                highPriorityQueue.dequeue();
+            } else {
+                return volunteer;
+            }
+        }
+
+        while (!mediumPriorityQueue.isEmpty()) {
+            Volunteer volunteer = mediumPriorityQueue.peek();
+            if (volunteer.isAssigned()) { //lazy deletion
+                mediumPriorityQueue.dequeue();
+            } else {
+                return volunteer;
+            }
+        }
+
+        while (!lowPriorityQueue.isEmpty()) {
+            Volunteer volunteer = lowPriorityQueue.peek();
+            if (volunteer.isAssigned()) { //lazy deletion
+                lowPriorityQueue.dequeue();
+            } else {
+                return volunteer;
+            }
+        }
+        return null;
+    }
 }

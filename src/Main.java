@@ -1,3 +1,5 @@
+import datastructures.Stack;
+
 import java.util.Scanner;
 
 public class Main {
@@ -18,7 +20,9 @@ public class Main {
             System.out.println("4. Assign task to a volunteer");
             System.out.println("5. Undo last action");
             System.out.println("6. Display all volunteers");
-            System.out.println("7. Exit program");
+            System.out.println("7. Display the last action");
+            System.out.println("8. Display the next person to be assigned a task");
+            System.out.println("9. Exit program");
             System.out.println("----------------------------------------");
             System.out.println("Enter your choice (1-7): ");
             String choice = input.nextLine();
@@ -88,7 +92,13 @@ public class Main {
                 case "6": //Print all Volunteers
                     coordinationSystem.getAllVolunteers();
                     break;
-                case "7": //Exit program
+                case "7": //Print last action on stack
+                    coordinationSystem.displayLastAction();
+                    break;
+                case "8": //Print volunteer at queue head
+                    coordinationSystem.displayNextVolunteer();
+                    break;
+                case "9": //Exit program
                     System.out.println("Exiting the program...");
                     running = false;
                     break;
