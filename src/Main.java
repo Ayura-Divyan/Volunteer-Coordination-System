@@ -92,10 +92,12 @@ public class Main {
                 case "6": //Print all Volunteers
                     coordinationSystem.getAllVolunteers();
                     break;
-                case "7":
+                case "7": //Print last action on stack
                     coordinationSystem.displayLastAction();
-                case "8":
+                    break;
+                case "8": //Print volunteer at queue head
                     coordinationSystem.displayNextVolunteer();
+                    break;
                 case "9": //Exit program
                     System.out.println("Exiting the program...");
                     running = false;
