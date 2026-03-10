@@ -93,7 +93,9 @@ public class Main {
                     coordinationSystem.getAllVolunteers();
                     break;
                 case "7":
-
+                    coordinationSystem.displayLastAction();
+                case "8":
+                    coordinationSystem.displayNextVolunteer();
                 case "9": //Exit program
                     System.out.println("Exiting the program...");
                     running = false;
