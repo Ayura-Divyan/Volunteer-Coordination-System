@@ -1,7 +1,7 @@
 package datastructures;
 
 //Node for the custom data structures
-//T is called a generic since the linked list takes multiple data types
+//T is called a generic since the linked list takes multiple data types and since node is reused
 public class Node<T> {
     T data;
     Node<T> next;
