@@ -75,24 +75,37 @@ project-root/
 | `Stack<ActionRecord>` | `volunteerHistory` | LIFO access makes undo O(1). Each push records exactly one reversible action. |
 
 ---
-
 ## Getting Started
 
-### Prerequisites
+### Option A — Run the pre-built JAR (recommended)
 
-- Java Development Kit (JDK) 8 or higher
-- The `datastructures` package present on the classpath (see project structure above)
+A compiled, executable JAR is provided in the release. It bundles all classes including the `datastructures` package — no additional dependencies or compilation required.
 
-### Compilation
+**Prerequisites:** Java Runtime Environment (JRE) 8 or higher.
+```bash
+java -jar SmartEventCoordination.jar
+```
 
-From the project root, compile all source files together so cross-package references resolve correctly:
+---
+
+### Option B — Build from source
+
+**Prerequisites:** Java Development Kit (JDK) 8 or higher.
+
+Compile all source files from the project root so cross-package references resolve correctly:
 ```bash
 javac -d out datastructures/*.java *.java
 ```
 
-### Running
+Then run:
 ```bash
 java -cp out Main
+```
+
+To produce your own JAR matching the release:
+```bash
+jar cfe SmartEventCoordination.jar Main -C out .
+java -jar SmartEventCoordination.jar
 ```
 
 ---
